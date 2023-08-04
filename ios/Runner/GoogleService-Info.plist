@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>342819086442-j7n93eaupgfbf74qpfbb6gqldgeurcdk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.342819086442-j7n93eaupgfbf74qpfbb6gqldgeurcdk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD_XX5g1Yvr2LSmQDaDFKt4oqIzhSIFb-Q</string>
+	<key>GCM_SENDER_ID</key>
+	<string>342819086442</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>site.tunckankilic.tunctalk</string>
+	<key>PROJECT_ID</key>
+	<string>tkchatbeta</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tkchatbeta.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:342819086442:ios:aef9b9523a8f304ed7ea13</string>
+</dict>
+</plist>
