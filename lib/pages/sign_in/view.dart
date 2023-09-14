@@ -102,7 +102,7 @@ class SignInPage extends GetView<SignInController> {
             ),
             child: btnFlatButtonWidget(
               onPressed: () {
-                controller.handleSignIn();
+                controller.handleSignIn(type: "google");
               },
               width: 200.w,
               height: 55.h,
@@ -116,7 +116,9 @@ class SignInPage extends GetView<SignInController> {
               right: 50.w,
             ),
             child: btnFlatButtonWidget(
-              onPressed: () {},
+              onPressed: () {
+                controller.handleSignIn(type: "facebook");
+              },
               width: 200.w,
               height: 55.h,
               title: "Facebook Login",

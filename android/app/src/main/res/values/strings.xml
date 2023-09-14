@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">tunctalk</string>
+    <string name="facebook_app_id">1998762393849749</string>
+    <string name="facebook_client_token">05c931ac4afd546a6c9ef233e9edff6c</string>
+    <string name="fb_login_protocol_scheme">fb1998762393849749</string>
+</resources>

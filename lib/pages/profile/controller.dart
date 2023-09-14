@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../common/common.dart';
@@ -7,10 +8,10 @@ import '../pages.dart';
 class ProfileController extends GetxController {
   ProfileController();
   final state = ProfileState();
-  final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: <String>[
-    "email",
-    "https://www.googleapis.com/auth/contacts.readonly"
-  ]);
+  // final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: <String>[
+  //   "email",
+  //   "https://www.googleapis.com/auth/contacts.readonly"
+  // ]);
 
   asyncLoadAllData() async {
     String profile = await UserStore.to.getProfile();
@@ -22,8 +23,17 @@ class ProfileController extends GetxController {
   }
 
   Future<void> onLogOut() async {
+    var type = utf8.encode(StorageService.to.getString(STORAGE_USER_TYPE));
+    var googleType = utf8.encode("google");
+    var facebookType = utf8.encode("facebook");
+    if (type.toString() == googleType.toString()) {
+      await SignInController().signOut();
+    } else if (type.toString() == facebookType.toString()) {
+      await FacebookAuth.instance.logOut();
+    }
+
     UserStore.to.onLogout();
-    await _googleSignIn.signOut();
+
     Get.offAndToNamed(AppRoutes.SIGN_IN);
   }
 

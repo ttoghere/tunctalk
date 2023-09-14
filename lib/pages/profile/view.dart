@@ -172,7 +172,7 @@ class ProfilePage extends GetView<ProfileController> {
                       ),
                       alignment: Alignment.centerLeft,
                       width: 190.w,
-                      height: 54.w,
+                      height: 60.w,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

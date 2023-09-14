@@ -33,6 +33,10 @@ class UserStore extends GetxController {
     token = value;
   }
 
+  Future<String> getUserType() async {
+    return StorageService.to.getString(STORAGE_USER_TYPE);
+  }
+
   // Get Profile data
   Future<String> getProfile() async {
     if (token.isEmpty) return "";
@@ -45,6 +49,7 @@ class UserStore extends GetxController {
   Future<void> saveProfile(UserLoginResponseEntity profile) async {
     _isLogin.value = true;
     StorageService.to.setString(STORAGE_USER_PROFILE_KEY, jsonEncode(profile));
+    StorageService.to.setString(STORAGE_USER_TYPE, jsonEncode(profile.type));
     setToken(profile.accessToken!);
   }
 
@@ -53,6 +58,7 @@ class UserStore extends GetxController {
     // if (_isLogin.value) await UserAPI.logout();
     await StorageService.to.remove(STORAGE_USER_TOKEN_KEY);
     await StorageService.to.remove(STORAGE_USER_PROFILE_KEY);
+    await StorageService.to.remove(STORAGE_USER_TYPE);
     _isLogin.value = false;
     token = '';
   }
