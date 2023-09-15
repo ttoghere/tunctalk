@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "342819086442-hrmeq8g0cpih1qif5ohpkq95csipn07n.apps.googleusercontent.com",
+          "client_id": "342819086442-61qtourlg7srohqub976u16b4svocfon.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "site.tunckankilic.tunctalk",
-            "certificate_hash": "797ed72f498b72cfcf730e9678d721f3bef239dd"
+            "certificate_hash": "3b2350479aa94bb0c8082d6f4757b083a4c8ab31"
           }
         },
         {

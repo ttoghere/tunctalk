@@ -7,7 +7,7 @@
 	<key>REVERSED_CLIENT_ID</key>
 	<string>com.googleusercontent.apps.342819086442-j7n93eaupgfbf74qpfbb6gqldgeurcdk</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>342819086442-hrmeq8g0cpih1qif5ohpkq95csipn07n.apps.googleusercontent.com</string>
+	<string>342819086442-61qtourlg7srohqub976u16b4svocfon.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyD_XX5g1Yvr2LSmQDaDFKt4oqIzhSIFb-Q</string>
 	<key>GCM_SENDER_ID</key>
@@ -32,16 +32,5 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:342819086442:ios:aef9b9523a8f304ed7ea13</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.342819086442-j7n93eaupgfbf74qpfbb6gqldgeurcdk</string>
-			</array>
-		</dict>
-	</array>
 </dict>
 </plist>

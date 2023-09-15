@@ -21,70 +21,60 @@ class SignInController extends GetxController {
   final auth = FirebaseAuth.instance;
   Future<void> handleSignIn({required String type}) async {
     try {
+      log("Google 1");
       if (type == "google") {
         var user = await _googleSignIn.signIn();
-        log("Break 1");
+        print("user-----------------");
+        print(user);
         if (user != null) {
-          final gAuthentication = await user.authentication;
-          final credential = GoogleAuthProvider.credential(
-            idToken: gAuthentication.idToken,
-            accessToken: gAuthentication.accessToken,
-          );
-          log("Break 2");
+          final _gAuthentication = await user.authentication;
+          final _credential = GoogleAuthProvider.credential(
+              idToken: _gAuthentication.idToken,
+              accessToken: _gAuthentication.accessToken);
 
-          await auth.signInWithCredential(credential);
-          log("Break 3");
+          await FirebaseAuth.instance.signInWithCredential(_credential);
 
           String displayName = user.displayName ?? user.email;
           String email = user.email;
           String id = user.id;
-          String photoUrl = user.photoUrl ?? nullPicUrl;
-          //A model for manipulating user information
+          String photoUrl = user.photoUrl ?? "";
           UserLoginResponseEntity userProfile = UserLoginResponseEntity();
           userProfile.email = email;
           userProfile.accessToken = id;
           userProfile.displayName = displayName;
           userProfile.photoUrl = photoUrl;
           userProfile.type = "google";
-          //Controller for storing user data and status
-          UserStore.to.saveProfile(userProfile);
-          log("Break 4");
 
-          //Gets user data from firestore
+          UserStore.to.saveProfile(userProfile);
           var userbase = await db
               .collection("users")
               .withConverter(
                 fromFirestore: UserData.fromFirestore,
-                toFirestore: (UserData userData, options) =>
-                    userData.toFirestore(),
+                toFirestore: (UserData userdata, options) =>
+                    userdata.toFirestore(),
               )
               .where("id", isEqualTo: id)
               .get();
-          log("Break 5");
 
-          //Checking the users existence
           if (userbase.docs.isEmpty) {
             final data = UserData(
-              id: id,
-              name: displayName,
-              email: email,
-              photourl: photoUrl,
-              location: "",
-              fcmtoken: "",
-              addtime: Timestamp.now(),
-            );
-            //Saves data to firestore
+                id: id,
+                name: displayName,
+                email: email,
+                photourl: photoUrl,
+                location: "",
+                fcmtoken: "",
+                addtime: Timestamp.now());
             await db
                 .collection("users")
                 .withConverter(
                   fromFirestore: UserData.fromFirestore,
-                  toFirestore: (UserData userData, options) =>
-                      userData.toFirestore(),
+                  toFirestore: (UserData userdata, options) =>
+                      userdata.toFirestore(),
                 )
                 .add(data);
-            log("Break 6");
           }
-          toastInfo(msg: "Login Success");
+          toastInfo(msg: "login success");
           Get.offAndToNamed(AppRoutes.Application);
         }
       } else if (type == "facebook") {

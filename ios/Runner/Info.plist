@@ -30,9 +30,16 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.342819086442-j7n93eaupgfbf74qpfbb6gqldgeurcdk</string>
+				<string>fb1998762393849749</string>
 			</array>
 		</dict>
 	</array>
+	<key>FacebookAppID</key>
+	<string>1998762393849749</string>
+	<key>FacebookClientToken</key>
+	<string>05c931ac4afd546a6c9ef233e9edff6c</string>
+	<key>FacebookDisplayName</key>
+	<string>tunctalk</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -69,20 +76,6 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>CFBundleURLTypes</key>
-	<array>
-	<dict>
-	<key>CFBundleURLSchemes</key>
-	<array>
-		<string>fb1998762393849749</string>
-	</array>
-	</dict>
-	</array>
-	<key>FacebookAppID</key>
-	<string>1998762393849749</string>
-	<key>FacebookClientToken</key>
-	<string>05c931ac4afd546a6c9ef233e9edff6c</string>
-	<key>FacebookDisplayName</key>
-	<string>tunctalk</string>
+
 </dict>
 </plist>
