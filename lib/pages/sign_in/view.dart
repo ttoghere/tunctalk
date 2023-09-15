@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -124,19 +126,23 @@ class SignInPage extends GetView<SignInController> {
               title: "Facebook Login",
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(
-              top: 30.h,
-              left: 50.w,
-              right: 50.w,
-            ),
-            child: btnFlatButtonWidget(
-              onPressed: () {},
-              width: 200.w,
-              height: 55.h,
-              title: "Apple Login",
-            ),
-          ),
+          Platform.isIOS
+              ? Padding(
+                  padding: EdgeInsets.only(
+                    top: 30.h,
+                    left: 50.w,
+                    right: 50.w,
+                  ),
+                  child: btnFlatButtonWidget(
+                    onPressed: () async {
+                      await controller.handleSignIn(type: "apple");
+                    },
+                    width: 200.w,
+                    height: 55.h,
+                    title: "Apple Login",
+                  ),
+                )
+              : const SizedBox()
         ],
       ),
     );

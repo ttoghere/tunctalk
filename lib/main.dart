@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         //For using get package features in app
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'TKChat',
+          title: 'TuncTalk',
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
