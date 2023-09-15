@@ -1,18 +1,27 @@
+import 'dart:developer';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
+import 'package:tunctalk/common/utils/notification_helper.dart';
+import 'package:tunctalk/pages/global.dart';
 import 'common/common.dart';
-import 'firebase_options.dart';
+
+Future<dynamic> backgroundMessageHandler(
+    {required RemoteMessage remoteMessage}) async {
+  log("...onBackground: ${remoteMessage.notification?.title}/${remoteMessage.notification?.body}");
+}
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  await Get.putAsync<StorageService>(() => StorageService().init());
-  Get.put<ConfigStore>(ConfigStore());
-  Get.put<UserStore>(UserStore());
+  await Global.init();
+  await FirebaseMessaging.instance.getInitialMessage();
+  try {
+    await NotificationHelper.init();
+    FirebaseMessaging.onBackgroundMessage(
+        (message) => backgroundMessageHandler(remoteMessage: message));
+  } catch (e) {
+    log("...couldn't init: $e");
+  }
   runApp(const MyApp());
 }
 

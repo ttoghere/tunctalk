@@ -5,6 +5,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import '../../../common/common.dart';
 import '../../pages.dart';
@@ -22,6 +23,7 @@ class ChatController extends GetxController {
   File? _photo;
   final ImagePicker _picker = ImagePicker();
   ChatController();
+  var userProfile = UserStore.to.profile;
   @override
   void onInit() {
     super.onInit();
@@ -66,6 +68,43 @@ class ChatController extends GetxController {
       "last_msg": sendContent,
       "last_time": Timestamp.now(),
     });
+    var userbase = await db
+        .collection("users")
+        .withConverter(
+          fromFirestore: UserData.fromFirestore,
+          toFirestore: (UserData userData, options) => userData.toFirestore(),
+        )
+        .where("id", isEqualTo: state.toUID.value)
+        .get();
+    if (userbase.docs.isNotEmpty) {
+      var title = "Message made by ${userProfile.displayName}";
+      var body = sendContent;
+      var token = userbase.docs.first.data().fcmtoken;
+      print(token);
+      if (token != null) {
+        // sendNotification(title, body, token);
+      }
+    }
+  }
+
+  Future<void> sendNotification(
+      {required String title,
+      required String body,
+      required String token}) async {
+    const String url = "https://fcm.googleapis.com/fcm/send";
+
+    final response = await http.post(Uri.parse(url), headers: <String, String>{
+      "Content-type": "application/json",
+      "Keep-alive": "timeout=5",
+      "Authorization":
+          "key=AAAAT9GcIGo:APA91bEQhh7wevVsXv1ZciWfJTt65TMPNa39AYr3gI8wrIpDnQQPHtMfHZpfWS0oZDUIGd8_S_K1pI6eOstnGk9IezyDcGWAJW-8AorxI_jgMJNr8zcBGz-wIDNUI38rr5eG5OUb4XDQ"
+    }, body: {
+      "body": body,
+      "title": title,
+      "priority": "high",
+      "to": token,
+    });
+    log("Result: ${response.body}");
   }
 
   //

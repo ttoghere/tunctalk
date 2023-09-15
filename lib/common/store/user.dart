@@ -51,6 +51,8 @@ class UserStore extends GetxController {
     StorageService.to.setString(STORAGE_USER_PROFILE_KEY, jsonEncode(profile));
     StorageService.to.setString(STORAGE_USER_TYPE, jsonEncode(profile.type));
     setToken(profile.accessToken!);
+    //Device to Device Chat
+    _profile(profile);
   }
 
   // Token SignOut

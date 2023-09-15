@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
@@ -93,6 +95,24 @@ class MessageController extends GetxController {
         await db.collection("users").doc(docID).update({"fcmtoken": fcmToken});
       }
     }
+    await FirebaseMessaging.instance
+        .setForegroundNotificationPresentationOptions(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
+
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      log("On Background");
+      log("Message: $message");
+      log("Message Data: ${message.data}");
+    });
+
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      log("On Opened");
+      log("Message: ${message.notification?.title}/${message.notification?.body}");
+      log("Message Data: ${message.data}");
+    });
   }
 
   void onRefresh() {
