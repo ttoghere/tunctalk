@@ -1,4 +1,4 @@
-Privacy Policy for [Your App Name]
+Privacy Policy for TuncTalk
 
 This Privacy Policy explains how Tunç Kankılıç collects, uses, shares, and safeguards information when you use our Flutter Firebase chat application TuncTalk. By using the App, you agree to the practices described in this Privacy Policy.
 
