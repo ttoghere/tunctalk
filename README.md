@@ -39,5 +39,3 @@ We may update this Privacy Policy to reflect changes in our practices or for oth
 7. Contact Us
 
 If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at ismail.tunc.kankilic@gmail.com
-
-Remember, this is a sample text and should not be considered a substitute for professional legal advice. It's important to consult with a lawyer or legal professional to ensure that your privacy policy complies with applicable laws and regulations.
