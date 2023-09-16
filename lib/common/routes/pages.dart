@@ -15,9 +15,7 @@ class AppPages {
       name: AppRoutes.INITIAL,
       page: () => const WelcomePage(),
       binding: WelcomeBinding(),
-      middlewares: [
-        RouteWelcomeMiddleware(priority: 1),
-      ],
+      middlewares: [],
     ),
     GetPage(
       name: AppRoutes.SIGN_IN,
