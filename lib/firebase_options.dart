@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCsJMKiMfYRYpj8d434F9wiesaZGN7yDX0',
-    appId: '1:342819086442:android:c2c61ea10e019a06d7ea13',
+    appId: '1:342819086442:android:ea4a496c60c10ae8d7ea13',
     messagingSenderId: '342819086442',
     projectId: 'tkchatbeta',
     storageBucket: 'tkchatbeta.appspot.com',
@@ -59,10 +59,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyD_XX5g1Yvr2LSmQDaDFKt4oqIzhSIFb-Q',
-    appId: '1:342819086442:ios:aef9b9523a8f304ed7ea13',
+    appId: '1:342819086442:ios:408ae69f26ba64e1d7ea13',
     messagingSenderId: '342819086442',
     projectId: 'tkchatbeta',
     storageBucket: 'tkchatbeta.appspot.com',
+    androidClientId: '342819086442-61qtourlg7srohqub976u16b4svocfon.apps.googleusercontent.com',
     iosClientId: '342819086442-j7n93eaupgfbf74qpfbb6gqldgeurcdk.apps.googleusercontent.com',
     iosBundleId: 'site.tunckankilic.tunctalk',
   );

@@ -1,7 +1,6 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,13 +33,13 @@ class ChatController extends GetxController {
     state.toAvatar.value = data["to_avatar"] ?? "";
   }
 
-  //Notification
-  void noti() async {
-    final FirebaseMessaging fcm = FirebaseMessaging.instance;
-    await fcm.requestPermission();
-    final token = await fcm.getToken();
-    log("Token: $token");
-  }
+  // //Notification
+  // void noti() async {
+  //   final FirebaseMessaging fcm = FirebaseMessaging.instance;
+  //   await fcm.requestPermission();
+  //   final token = await fcm.getToken();
+  //   log("Token: $token");
+  // }
 
   //Send the message to database
   sendMessage() async {
@@ -111,7 +110,7 @@ class ChatController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    noti();
+    // noti();
     var messages = db
         .collection("message")
         .doc(doc_id)

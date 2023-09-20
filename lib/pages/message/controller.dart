@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../common/common.dart';
@@ -85,35 +84,35 @@ class MessageController extends GetxController {
 //     }
 //   }
 
-  getFcmToken() async {
-    final fcmToken = await FirebaseMessaging.instance.getToken();
-    if (fcmToken != null) {
-      var user =
-          await db.collection("users").where("id", isEqualTo: token).get();
-      if (user.docs.isNotEmpty) {
-        var docID = user.docs.first.id;
-        await db.collection("users").doc(docID).update({"fcmtoken": fcmToken});
-      }
-    }
-    await FirebaseMessaging.instance
-        .setForegroundNotificationPresentationOptions(
-      alert: true,
-      badge: true,
-      sound: true,
-    );
+  // getFcmToken() async {
+  //   final fcmToken = await FirebaseMessaging.instance.getToken();
+  //   if (fcmToken != null) {
+  //     var user =
+  //         await db.collection("users").where("id", isEqualTo: token).get();
+  //     if (user.docs.isNotEmpty) {
+  //       var docID = user.docs.first.id;
+  //       await db.collection("users").doc(docID).update({"fcmtoken": fcmToken});
+  //     }
+  //   }
+  //   await FirebaseMessaging.instance
+  //       .setForegroundNotificationPresentationOptions(
+  //     alert: true,
+  //     badge: true,
+  //     sound: true,
+  //   );
 
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      log("On Background");
-      log("Message: $message");
-      log("Message Data: ${message.data}");
-    });
+  //   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+  //     log("On Background");
+  //     log("Message: $message");
+  //     log("Message Data: ${message.data}");
+  //   });
 
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      log("On Opened");
-      log("Message: ${message.notification?.title}/${message.notification?.body}");
-      log("Message Data: ${message.data}");
-    });
-  }
+  //   FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+  //     log("On Opened");
+  //     log("Message: ${message.notification?.title}/${message.notification?.body}");
+  //     log("Message Data: ${message.data}");
+  //   });
+  // }
 
   void onRefresh() {
     asyncLoadAllData().then((_) {
@@ -134,7 +133,7 @@ class MessageController extends GetxController {
   @override
   void onReady() {
     // getUserLocation();
-    getFcmToken();
+    // getFcmToken();
     super.onReady();
   }
 }
